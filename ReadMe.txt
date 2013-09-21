@@ -1,0 +1,1 @@
+Install this directory in your home directory ($HOME).
