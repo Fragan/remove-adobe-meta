@@ -1,1 +1,1 @@
-Install this directory in your home directory ($HOME).
+Install this directory in your home directory ($HOME) as remove-adobe-meta.
