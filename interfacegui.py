@@ -50,7 +50,7 @@ class Interface(Frame):
 
   def clean(self):
     # tester directory.exist()
-    subprocess.call(['remove-adobe-meta.sh', self.path_txt.get()])
+    subprocess.call(['$HOME/remove-adobe-meta/remove-adobe-meta.sh', self.path_txt.get()])
 
   def browse(self):
     self.path = fd.askdirectory(title="Select a directory")
