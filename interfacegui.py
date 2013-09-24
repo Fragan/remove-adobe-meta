@@ -10,8 +10,6 @@ if sys.version_info[0] < 3:
   sys.exit(1)
 
 
-
-
 import subprocess
 # import sys
 # if sys.platform == 'linux': # it's for python 3.x
@@ -19,11 +17,13 @@ import subprocess
 from tkinter import *
 import tkinter as tk
 import tkinter.filedialog as fd
+import tkinter.messagebox as mb
 # elif sys.platform == 'darwin': # it's for python 2.7.x
 #   print("Found Mac OSX distribution -")
 #   from Tkinter import *
 #   import Tkinter as tk
 #   import tkFileDialog as fd
+
 
 
 class Interface(Frame):
@@ -87,6 +87,11 @@ class Interface(Frame):
     #     print (line.rstrip()) # used by python 3.x
     #   else:
     #     break
+
+
+    # TODO replace the messagebox by a message in the console
+    mb.showinfo("Warning", "Treatment completed")
+
 
   def browse(self):
     self.txt_line.insert(0, "") # clean the path
