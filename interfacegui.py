@@ -1,6 +1,9 @@
 #!/bin/python
 
 
+import sys
+print(sys.version)
+
 import subprocess
 # import sys
 # if sys.platform == 'linux': # it's for python 3.x
