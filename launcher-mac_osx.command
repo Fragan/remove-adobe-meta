@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python3 $HOME/remove-adobe-meta/interfacegui.py
+cd $HOME/remove-adobe-meta/
+python3 interfacegui.py
