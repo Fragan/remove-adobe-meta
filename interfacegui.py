@@ -1,8 +1,16 @@
-#!/bin/python
+#!/usr/bin/python3
 
 
 import sys
 print(sys.version)
+
+
+if sys.version_info[0] < 3:
+  print("This script requires Python version 3.x")
+  sys.exit(1)
+
+
+
 
 import subprocess
 # import sys
