@@ -1,2 +1,2 @@
-- Remove old characters in textfield when open the browser.
+DONE - Remove old characters in textfield when open the browser.
 - Had the support of the space charaters contains in folders and files.

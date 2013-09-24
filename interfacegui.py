@@ -2,17 +2,17 @@
 
 
 import subprocess
-import sys
-if sys.platform == 'linux':
-  print("Found Linux distribution -")
-  from tkinter import *
-  import tkinter as tk
-  import tkinter.filedialog as fd
-elif sys.platform == 'darwin':
-  print("Found Mac OSX distribution -")
-  from Tkinter import *
-  import Tkinter as tk
-  import tkFileDialog as fd
+# import sys
+# if sys.platform == 'linux': # it's for python 3.x
+#   print("Found Linux distribution -")
+from tkinter import *
+import tkinter as tk
+import tkinter.filedialog as fd
+# elif sys.platform == 'darwin': # it's for python 2.7.x
+#   print("Found Mac OSX distribution -")
+#   from Tkinter import *
+#   import Tkinter as tk
+#   import tkFileDialog as fd
 
 
 class Interface(Frame):
@@ -20,7 +20,12 @@ class Interface(Frame):
      
   def __init__(self, frame, **kwargs):
     Frame.__init__(self, frame, width=768, height=576, **kwargs)
-    self.pack()
+    self.pack(fill="both", expand=True)
+    # ensure a consistent GUI size
+    self.grid_propagate(False)
+    # implement stretchability
+    self.grid_rowconfigure(0, weight=1)
+    self.grid_columnconfigure(0, weight=1)
 
     # layout
     self.browse_panel = Frame(self)
@@ -47,14 +52,35 @@ class Interface(Frame):
     self.clean_btn.pack(padx=5, pady=20, side=RIGHT)
 
 
+    self.console = Text(self, height=40, width=110, borderwidth=3, relief="sunken")
+    self.console.config(font=("consolas", 12), undo=True, wrap='word')
+    self.console.grid(row=0, column=0, sticky="nsew", padx=2, pady=2)
+    self.console.pack()
+
+    self.scrollb = Scrollbar(self, command=self.console.yview)
+    self.scrollb.grid(row=0, column=1, sticky='nsew')
+    self.console['yscrollcommand'] = self.scrollb.set
+    
+
+
+
+
 
   def clean(self):
     # tester directory.exist()
-    subprocess.call(['$HOME/remove-adobe-meta/remove-adobe-meta.sh', self.path_txt.get()])
+    process = subprocess.Popen(['./remove-adobe-meta.sh', self.path_txt.get()], stdout=subprocess.PIPE)
+    print(process.stdout.read())
+    # while True:
+    #   line = process.stdout.readline()
+    #   if line != '':
+    #     print (line.rstrip()) # used by python 3.x
+    #   else:
+    #     break
 
   def browse(self):
+    self.txt_line.insert(0, "") # clean the path
     self.path = fd.askdirectory(title="Select a directory")
-    self.txt_line.insert(0, self.path)
+    self.txt_line.insert(0, self.path) # set the new path
 
 
 
