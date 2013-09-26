@@ -1,3 +1,5 @@
 DONE - Remove old characters in textfield when open the browser.
 - Had the support of the space charaters contains in folders and files.
-- Replace the messagebox by a message in the console
+- Replace the messagebox by a message in the console or not ?
+- Test if the path is valid.
+- Console : autoscroll.
